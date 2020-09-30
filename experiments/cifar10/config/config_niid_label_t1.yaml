@@ -1,0 +1,111 @@
+# THis is config for data generate file
+config_path : ./utils/config.yaml 
+
+
+# dataset
+dataset: cifar10
+
+# number of Clients (default n=5) 
+clients: 100
+# client port (which we will start)
+client_port: 8000
+
+# reseve data for the server
+server_data: false
+
+# split mode dataset split: iid , niid
+split_mode: niid
+
+# ---- split_mode: iid -----
+
+# share samples between clients in the iid split mode
+iid_share: false
+
+# percentage of samples to share between clients 
+iid_rate: 0.1
+
+# ---- split_mode: niid -----
+
+# the number of samples that hold each client 
+# if server_data is true you should indicate the size of the data server in the last index (Ex : [1822, 1000, 1200, 1300, 1000, 2314])
+#data_size: [1822, 1000, 1200, 1300, 1000]
+data_size: [4027, 1551, 2970, 5182, 1664, 3613, 2128, 3290,   57, 5116,  649,
+       2442,  394, 5962,  789, 5441, 3276, 2202, 1064, 1197, 4522, 7586,
+       3667, 4975, 1010, 1295,  966,   92, 5495, 2304, 5741, 4866, 1647,
+       5355, 1645, 4699, 6430, 6151,  958, 6273, 4815, 5579, 2336, 1060,
+       4418, 2425,  224, 4984,  335, 6353, 1565, 5002, 6247, 5252, 4458,
+       3524, 3997, 4819, 1359,   84, 4823,  561,  483, 3501, 5040, 6058,
+       5773, 4452, 3077, 6400,  240,   44, 1724, 5904, 3844, 1309, 3381,
+       3193, 5230, 3348, 6411,  159, 2299, 1949,  879, 3668, 4075, 5831,
+       5150, 4625, 1247, 2115, 1440, 2719, 1214, 1478, 1065, 2002, 5617,
+        145]
+
+# there are 2 type : 'random' and 'label' for split by label 
+type: label
+
+# ---- type: label -----
+
+# number of class in each client 
+label_num: [ 7,  8,  6,  8,  8,  2, 10,  1,  4,  2,  3,  5,  4,  4,  9, 10,  9,
+        1,  2,  9,  4,  7,  3,  6, 10,  9,  8,  6,  6,  1,  3, 10, 10,  7,
+        9, 10,  6,  8,  9,  2,  7,  3,  3,  4,  7,  6, 10, 10, 10,  9,  6,
+        6,  1,  5, 10,  8,  7,  2,  4,  5, 10,  9,  7,  9,  5,  1,  1,  4,
+        8,  9,  4,  2,  6,  1,  1,  2,  2,  2,  5,  5,  4,  8,  3,  3,  9,
+        8, 10,  5, 10,  3,  2,  7,  9,  8,  6,  9,  3,  3,  6,  5]
+
+# how to share samples between clients who hold the same classes:
+  # 0: Share the same samples of class 
+  # 1: Share samples of class randomly 
+  # 2: Share different samples of class 
+  # 3: Share different class (sum(label_num) must <= number of class)
+share_samples: 1
+
+# share global dataset to all clients
+global_dataset: false
+
+# percentage of samples in the global dataset which we want to add
+data_rate: 0.1
+
+# if we want to add error to some samples 
+add_error: false
+# percentage of error to add
+error_rate: 0.01
+
+# the training config
+
+# batch size of the training
+batch_size: 5
+# batch size used for the test data
+test_batch_size: 128
+# number of federated learning rounds
+training_rounds: 2500
+# number of training steps performed on each remote worker before averaging
+federate_after_n_batches: 1
+# learning rate
+lr: 0.1
+#max number of batch
+max_nr_batches: 5
+# use cuda
+cuda: true
+# seed used for randomization
+seed: 1
+# if set, model will be saved
+save_model: false
+# if set, websocket client workers will be started in verbose mode
+verbose: false
+# Evaluate the model evrey n rounds
+eval_every: 100
+# Number of clients that will in each round
+fraction_client: 0.1
+# the optimazer that we will use : SGD or Adam
+optimizer: SGD
+# The model that we will use 
+model: cnn
+# type of aggragation : federated_avg or wieghted_avg
+aggregation: federated_avg
+# loss function : nll_loss or cross_entropy
+loss: cross_entropy
+
+
+
+

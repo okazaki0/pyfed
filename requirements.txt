@@ -1,0 +1,5 @@
+syft==0.2.5
+wget
+pandas
+pyyaml
+matplotlib

@@ -1,0 +1,108 @@
+# THis is config for data generate file
+config_path : ./utils/config.yaml 
+
+
+# dataset
+dataset: mnist
+
+# number of Clients (default n=5) 
+clients: 100
+# client port (which we will start)
+client_port: 8000
+
+# reseve data for the server
+server_data: false
+
+# split mode dataset split: iid , niid
+split_mode: niid
+
+# ---- split_mode: iid -----
+
+# share samples between clients in the iid split mode
+iid_share: false
+
+# percentage of samples to share between clients 
+iid_rate: 0.1
+
+# ---- split_mode: niid -----
+
+# the number of samples that hold each client 
+# if server_data is true you should indicate the size of the data server in the last index (Ex : [1822, 1000, 1200, 1300, 1000, 2314])
+#data_size: [1822, 1000, 1200, 1300, 1000]
+data_size: [    3,   101,    72,    21,    25,   168,   105,    97,     7,
+         145,    21,    98,     6,    39,    49,    24,    11,   134,
+          96,    11,   167,    11,    88,    28,   162,    65,   140,
+          32,    48,    69, 51601,   101,    44,   129,   109,    31,
+          97,    80,    18,    10,   158,   164,    40,    30,    91,
+           7,   105,    91,     5,    51,    46,    34,   138,   122,
+          66,    91,    11,    81,   123,   144,   162,   102,   137,
+         153,    97,   156,    72,    34,   140,    31,   168,    69,
+         165,    49,    69,    28,   103,   118,   126,   110,    77,
+         102,   156,   140,    73,   136,     3,   134,   169,   149,
+         147,    63,   171,    39,    95,   163,    87,    21,    44,
+          81]
+
+# there are 2 type : 'random' and 'label' for split by label 
+type: random
+
+# ---- type: label -----
+
+# number of class in each client 
+label_num: [2,4,1,4,3]
+
+# how to share samples between clients who hold the same classes:
+  # 0: Share the same samples of class 
+  # 1: Share samples of class randomly 
+  # 2: Share different samples of class 
+  # 3: Share different class (sum(label_num) must <= number of class)
+share_samples: 0
+
+# share global dataset to all clients
+global_dataset: false
+
+# percentage of samples in the global dataset which we want to add
+data_rate: 0.1
+
+# if we want to add error to some samples 
+add_error: false
+# percentage of error to add
+error_rate: 0.01
+
+# the training config
+
+# batch size of the training
+batch_size: 10
+# batch size used for the test data
+test_batch_size: 128
+# number of federated learning rounds
+training_rounds: 20
+# number of training steps performed on each remote worker before averaging
+federate_after_n_batches: 1
+# learning rate
+lr: 0.1
+#max number of batch
+max_nr_batches: 10
+# use cuda
+cuda: true
+# seed used for randomization
+seed: 1
+# if set, model will be saved
+save_model: false
+# if set, websocket client workers will be started in verbose mode
+verbose: false
+# Evaluate the model evrey n rounds
+eval_every: 2
+# Number of clients that will in each round
+fraction_client: 0.1
+# the optimazer that we will use : SGD or Adam
+optimizer: SGD
+# The model that we will use 
+model: cnn
+# type of aggragation : federated_avg or wieghted_avg
+aggregation: federated_avg
+# loss function : nll_loss or cross_entropy
+loss: nll_loss
+
+
+
+
