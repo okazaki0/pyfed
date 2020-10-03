@@ -110,7 +110,7 @@ After launching the workers correctly, we are ready to start the training using 
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
-| `model`                     | The name of he file (without .py extension) containing the model to be trained (see the models directory): `cnn`,`lstm`. |
+| `model`                     | The file name (without .py extension) containing the model to be trained (see the models directory): `cnn`,`lstm`. |
 | `batch_size`      | The batch size of the training: Integer. |
 | `test_batch_size` | The batch size used for the test data: Integer. |
 | `training_rounds` | The number of federated learning rounds: Integer. |
