@@ -18,8 +18,8 @@ The benchmarking is done using five dataset: `mnist`, `fashionmnist`, `cifar10`,
     + [Depdendencies](#dependencies)
     + [Install Dependencies](install-dependencies)
   * [Usage](#usage)
-    + [Launch Workers](#launch-the-workers)
-    + [Launch Training](#launch-the-training)
+    + [Launch Workers](#launching-the-workers)
+    + [Launch Training](#launching-the-training)
   * [Results](#results)
   * [Contributing](#contributing)
 
@@ -50,7 +50,7 @@ For running PyFed, please follow the next steps:
 
 All arguments have default values. However, these arguments should be set to the desired settings. 
 
-### Launch the Workers
+### Launching the Workers
 
 Workers can be launched using different arguments (see below)
 
@@ -78,7 +78,7 @@ In the case of Non-IID distribution (`split_mode = niid`), the following agrumen
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
 | `data_size`                     | The number of samples that hold each client: Integer |
-| `type`      | `random` split or `label` split using labels. |
+| `type`      | The split types: `random` or `label` split. |
 | `label_num` | The number of classes holded by a client when with `label` split type: Integer |
 | `share_samples` |  How to share samples between clients holding the same classes. In the case of `label` split type, the following values are possible :<ul><li>0: clients holding the same class share also the same samples</li><li>1: clients holding the same class might also share the same samples (random sampling)</li><li>2: clients holding the same class have different samples from this class</li></ul> |
 
@@ -101,10 +101,10 @@ python run/network/start_websocket_server.py --clients = 5 /
 Or using **config.yaml** file in `utils/`
 
 ```
-python run/network/start_websocket_server.py --config_file True
+python run/network/start_websocket_server.py -f file_name
 ```
 
-### Launch the training
+### Launching the training
 
 After launching the workers correctly, we are ready to start the training using the following arguments.
 
