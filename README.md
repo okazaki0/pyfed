@@ -4,9 +4,9 @@ This is the code accompanying the paper "PyFed: Exteding PySyft with N-IID Feder
 
 ## About
 
-PyFed is a benchmarking framework for federated learning extending [PySyft](https://github.com/OpenMined/PySyft), in a generic and distributed way. PyFed supports different aggregations methods and data distributions (Independent and Identically Distributed Data (IID) and Non-IID).
+PyFed is a benchmarking framework for federated learning extending [PySyft](https://github.com/OpenMined/PySyft), in a generic, flexible and distributed way. PyFed supports different aggregations methods and data distributions (Independent and Identically Distributed Data (IID) and Non-IID).
 
-In this sense, PyFed is an alternative benchemarking framework of [LEAF](https://github.com/TalwalkarLab/leaf) for Federated Learning for PySyft.
+ So,  PyFed is an alternative Federated Learningbenchemarking framework of [LEAF](https://github.com/TalwalkarLab/leaf) supporting PySyft.
 
 The benchmarking is done using five dataset: `mnist`, `fashionmnist`, `cifar10`, `sent140`, `shakespeare`.
 
