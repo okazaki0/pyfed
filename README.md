@@ -4,28 +4,30 @@ This is the code accompanying the paper "PyFed: Exteding PySyft with N-IID Feder
 
 ## About
 
-PyFed is a benchmarking framework for federated learning extending PySyft, in a generic and distributed way. PyFed supports different aggregations methods and data distribution (Independent and Identically Distributed Data (IID) and Non-IID).
+PyFed is a benchmarking framework for federated learning extending [PySyft](https://github.com/OpenMined/PySyft), in a generic and distributed way. PyFed supports different aggregations methods and data distributions (Independent and Identically Distributed Data (IID) and Non-IID).
 
-In this sense, PyFed is an alternative benchemarking framework of [LEAF](https://github.com/TalwalkarLab/leaf) for Federated Learning.
+In this sense, PyFed is an alternative benchemarking framework of [LEAF](https://github.com/TalwalkarLab/leaf) for Federated Learning for PySyft.
+
+The benchmarking is done using five dataset: `mnist`, `fashionmnist`, `cifar10`, `sent140`, `shakespeare`.
 
 ## Table of Contents
 - [PyFed](#pyfed)
   * [About](#about)
   * [Table of Contents](#table-of-contents)
   * [Installation](#installation)
-    + [Depdendencies](#depdendencies)
+    + [Depdendencies](#dependencies)
     + [Install Dependencies](install-dependencies)
   * [Usage](#usage)
-    + [Launch Workers](#launch-workers)
-    + [Launch Training](#launch-training)
+    + [Launch Workers](#launch-the-workers)
+    + [Launch Training](#launch-the-training)
   * [Results](#results)
   * [Contributing](#contributing)
 
 ## Installation
 
-### Depdendencies
+### Dependencies
 
-Tested stable depdencises:
+Tested stable dependencies:
 
 - [PySyft](https://github.com/OpenMined/PySyft) v0.2.5
 - Python 3.7
@@ -41,43 +43,48 @@ pip install -r requirements.txt
 
 ## Usage
 
-Now we will see who you can use PyFed 
+For running PyFed, please follow the next steps:
+1. Launch the workers: `python run/network/start_websocket_server.py [arguments]`
+2. Launch the training: `python run/network/main.py [arguments]`
+3. Get the results
 
-### Launch Workers
+Par default, all arguments have default values. How, these arguments should be set to the desired settings. 
 
-First we specify the arguments then we launch the workers
+### Launch the Workers
+
+Workers can be launched using different arguments (see below)
 
 #### Arguments
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
 | `clients`                     | The number of clients. |
-| `dataset`      | Dataset to use. `mnist`, `fashionmnist`, `cifar10`, `sent140`, `shakespeare`. |
-| `split_mode` | The split mode that we will use `iid` or `niid`. |
-| `global_dataset` | Share global dataset to all clients. |
-| `data_rate` | Percentage of samples in the global dataset which we want to add. |
-| `add_error` | If we want to add error to some samples. |
-| `error_rate` | Percentage of error to add. |
+| `dataset`      | Dataset to be used. `mnist`, `fashionmnist`, `cifar10`, `sent140`, `shakespeare`. |
+| `split_mode` | The split mode used either `iid` or `niid`. |
+| `global_dataset` | Share global dataset over all clients. |
+| `data_rate` | Percentage of samples in the global dataset to be added. |
+| `add_error` | Add error to some samples either `True` or `False`. |
+| `error_rate` | Percentage of error to be added. |
 
-In the case of IID distribution `split_mode = iid`
+In the case of IID distribution (`split_mode = iid`), the following agruments are available:
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
 | `iid_share`                     | Share samples between clients in the iid split mode. |
 | `iid_rate`      | Percentage of samples to share between clients|
 
-In the case of Non-IID distribution `split_mode = niid`
+In the case of Non-IID distribution (`split_mode = niid`), the following agruments are available:
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
 | `data_size`                     | The number of samples that hold each client. |
-| `type`      | They are 2 type : `random` and `label` for split by label. |
-| `label_num` | The number of class that each client will hold in the case of `label` split. |
-| `share_samples` |  How to share samples between clients who hold the same classes in the case of `label` split :<ul><li>0: Share the same samples of class</li><li>1: Share samples of class randomly</li><li>2: Share different samples of class</li><li>3: Share different class (sum(label_num) must <= number of class)</li></ul> |
+| `type`      | `random` split or `label` split using labels. |
+| `label_num` | The number of classes holded by a client when with `label` split type. |
+| `share_samples` |  How to share samples between clients holding the same classes. In the case of `label` split type, the following values are possible :<ul><li>0: clients holding the same class share also the same samples</li><li>1: clients holding the same class might also share the same samples (random sampling)</li><li>2: clients holding the same class have different samples from this class</li><li>3: Share different class (sum(label_num) must <= number of class)</li></ul> |
 
 #### Example
 
-There is two way to declare variable :
+There is two ways to define arguments: manually or using a config file. 
 
 **Manually**
 
@@ -97,9 +104,9 @@ Or using **config.yaml** file in `utils/`
 python run/network/start_websocket_server.py --config_file True
 ```
 
-### Launch Training
+### Launch the training
 
-After we ensure that the worker are working correctly, we are ready to start the training
+After launching the workers correctly, we are ready to start the training using the following arguments.
 
 #### Arguments
 
@@ -122,7 +129,7 @@ After we ensure that the worker are working correctly, we are ready to start the
 #### Example
 
 ```
-Python run/network/main.py –config_file True
+python run/network/main.py –config_file True
 ```
 
 ### Results
