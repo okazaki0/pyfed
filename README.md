@@ -48,7 +48,7 @@ For running PyFed, please follow the next steps:
 2. Launch the training: `python run/network/main.py [arguments]`
 3. Get the results
 
-Par default, all arguments have default values. How, these arguments should be set to the desired settings. 
+All arguments have default values. However, these arguments should be set to the desired settings. 
 
 ### Launch the Workers
 
