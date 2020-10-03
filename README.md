@@ -1,7 +1,5 @@
 # PyFed
 
-PyFed 
-
 This is the code accompanying the paper "PyFed: Exteding PySyft with N-IID Federated Learning Benchmark" Paper link:  (Coming soon)
 
 ## About
