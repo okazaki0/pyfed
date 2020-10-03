@@ -110,19 +110,19 @@ After launching the workers correctly, we are ready to start the training using 
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
-| `model`                     | The model that we will use e.g.`cnn`,`lstm`. |
-| `batch_size`      | The batch size of the training. |
-| `test_batch_size` | The batch size used for the test data. |
-| `training_rounds` | The number of federated learning rounds. |
-| `federate_after_n_batches` | The number of training steps performed on each remote worker before averaging. |
-| `lr` | The learning rate. |
-| `cuda` | The use cuda. |
-| `seed` | The seed used for randomization. |
-| `eval_every` | Evaluate the model evrey n rounds. |
-| `fraction_client` | The number of clients that will in each round. |
-| `optimizer` | The optimazer that we will use : `SGD` or `Adam`. |
-| `aggregation` | The type of aggragation : `federated_avg` or `wieghted_avg`. |
-| `loss` | The loss function : nll_loss or cross_entropy. |
+| `model`                     | The model name to be used that we will use e.g.`cnn`,`lstm`. |
+| `batch_size`      | The batch size of the training: Integer. |
+| `test_batch_size` | The batch size used for the test data: Integer. |
+| `training_rounds` | The number of federated learning rounds: Integer. |
+| `federate_after_n_batches` | The number of training steps performed on each remote worker before averaging: Integer. |
+| `lr` | The learning rate: float |
+| `cuda` | The use cuda: `True` or `False`. |
+| `seed` | The seed used for randomization: Integer. |
+| `eval_every` | Evaluate the model evrey n rounds: Integer. |
+| `fraction_client` | The number of clients that will in each round: Integer. |
+| `optimizer` | The optimazer that we will use: `SGD` or `Adam`. |
+| `aggregation` | The type of aggragation : `federated_avg` or `weighted_avg`. |
+| `loss` | The loss function: `nll_loss` or `cross_entropy`. |
 
 #### Example
 
