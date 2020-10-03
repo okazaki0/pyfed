@@ -416,8 +416,8 @@ Here is some experimentation results that we get using our framework, you can ch
 </tr>
 <tr>
 <td width="8%">
-<p>Sent</p>
-<p>140</p>
+<p>Sent 140</p>
+
 </td>
 <td width="5%">
 <p>LSTM</p>
