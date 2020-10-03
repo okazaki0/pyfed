@@ -48,7 +48,7 @@ For running PyFed, please follow the next steps:
 2. Launch the training: `python run/network/main.py [arguments]`
 3. Get the results
 
-All arguments have default values. However, these arguments should be set to the desired settings. 
+All arguments have default values. However, these arguments should be set to the desired settings either manually or using a config file.
 
 ### Launching the Workers
 
@@ -83,8 +83,6 @@ In the case of Non-IID distribution (`split_mode = niid`), the following agrumen
 | `share_samples` |  How to share samples between clients holding the same classes. In the case of `label` split type, the following values are possible :<ul><li>0: clients holding the same class share also the same samples</li><li>1: clients holding the same class might also share the same samples (random sampling)</li><li>2: clients holding the same class have different samples from this class</li></ul> |
 
 #### Example
-
-There is two ways to define arguments: manually or using a config file. 
 
 **Manually**
 
