@@ -1,10 +1,12 @@
 # PyFed
 
-This is the code accompanying  paper "PyFed: Exteding PySyft with N-IID FederatedLearning Benchmark" Paper link:  (Coming soon)
+PyFed 
+
+This is the code accompanying the paper "PyFed: Exteding PySyft with N-IID Federated Learning Benchmark" Paper link:  (Coming soon)
 
 ## About
 
-PyFed is benchmarking framework, developed  in generic and distributed way for the federated learning that support different aggregations methods, also support all the cases of data distribution (IID and Non-IID).
+PyFed is benchmarking framework for federated learning extending PySyft, in a generic and distributed way, that support different aggregations methods and data distribution (Independent and Identically Distributed Data (IID) and Non-IID).
 
 ## Table of Contents
 - [PyFed](#pyfed)
