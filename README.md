@@ -58,29 +58,29 @@ Workers can be launched using different arguments (see below)
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
-| `clients`                     | The number of clients. |
-| `dataset`      | Dataset to be used. `mnist`, `fashionmnist`, `cifar10`, `sent140`, `shakespeare`. |
-| `split_mode` | The split mode used either `iid` or `niid`. |
+| `clients`                     | The number of clients: Integer |
+| `dataset`      | Dataset to be used: `mnist`, `fashionmnist`, `cifar10`, `sent140`, `shakespeare`. |
+| `split_mode` | The split mode used: `iid` or `niid`. |
 | `global_dataset` | Share global dataset over all clients. |
-| `data_rate` | Percentage of samples in the global dataset to be added. |
-| `add_error` | Add error to some samples either `True` or `False`. |
-| `error_rate` | Percentage of error to be added. |
+| `data_rate` | Percentage of samples in the global dataset to be added: 0.x |
+| `add_error` | Add error to some samples: `True` or `False`. |
+| `error_rate` | Percentage of error to be added: 0.x |
 
 In the case of IID distribution (`split_mode = iid`), the following agruments are available:
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
 | `iid_share`                     | Share samples between clients in the iid split mode. |
-| `iid_rate`      | Percentage of samples to share between clients|
+| `iid_rate`      | Percentage of samples to share between clients: 0.x|
 
 In the case of Non-IID distribution (`split_mode = niid`), the following agruments are available:
 
 | Argument                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
-| `data_size`                     | The number of samples that hold each client. |
+| `data_size`                     | The number of samples that hold each client: Integer |
 | `type`      | `random` split or `label` split using labels. |
-| `label_num` | The number of classes holded by a client when with `label` split type. |
-| `share_samples` |  How to share samples between clients holding the same classes. In the case of `label` split type, the following values are possible :<ul><li>0: clients holding the same class share also the same samples</li><li>1: clients holding the same class might also share the same samples (random sampling)</li><li>2: clients holding the same class have different samples from this class</li><li>3: Share different class (sum(label_num) must <= number of class)</li></ul> |
+| `label_num` | The number of classes holded by a client when with `label` split type: Integer |
+| `share_samples` |  How to share samples between clients holding the same classes. In the case of `label` split type, the following values are possible :<ul><li>0: clients holding the same class share also the same samples</li><li>1: clients holding the same class might also share the same samples (random sampling)</li><li>2: clients holding the same class have different samples from this class</li></ul> |
 
 #### Example
 
