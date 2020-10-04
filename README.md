@@ -59,7 +59,7 @@ pip install -r requirements.txt
 
 For running PyFed, please follow the next steps:
 1. Launch the workers: `python run/network/start_websocket_server.py [arguments]`
-2. Launch the training: `python run/network/main.py [arguments]`
+2. Launch the training: `python run/training/main.py [arguments]`
 3. Get the results
 
 All arguments have default values. However, these arguments should be set to the desired settings either manually or using a config file.
