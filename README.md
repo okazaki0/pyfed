@@ -110,7 +110,7 @@ python run/network/start_websocket_server.py --clients = 5 /
 --share_samples = 2
 ```
 
-Or using **config.yaml** file in `utils/`
+Or using **config.yml** 
 
 ```
 python run/network/start_websocket_server.py -f file_name
@@ -154,7 +154,7 @@ python run/training/main.py --model = cnn /
 --loss = nll_loss
 ```
 
-Using **config.yaml** file in `utils/`
+Using **config.yml** file 
 
 ```
 python run/training/main.py -f file_name
@@ -438,7 +438,7 @@ This table contains the configuration that we use in our benchmark.
 <table width="900">
 <tbody>
 <tr>
-<td rowspan="3" width="100">
+<td rowspan="3" width="90">
 <p>&nbsp;</p>
 <p><strong>Dataset</strong></p>
 </td>
