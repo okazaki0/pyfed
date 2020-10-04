@@ -46,14 +46,14 @@ pip install -r requirements.txt
 
 | Package                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
-| `models`                     | <ul><li>The models of each data</li><li>Define the package of `metric` that we use.</li></ul> |
-| `datasets`      | <ul><li>Every dataset with the preprocess.</li><li>The data loader module that load the data and split it.</li></ul> |
-| `aggregation` | This package contain the aggregation method. |
-| `run` | <ul><li>The script for starting the workers.</li><li> The script for launching the training process.</li></ul> |
+| `models`                     | <ul><li>ML models for each dataset.</li><li>Define the package of `metric` that we use.</li></ul> |
+| `datasets`      | <ul><li>Preprocessing for each dataset.</li><li>Data loader and data splitting.</li></ul> |
+| `aggregation` | Aggregation methods for FL. |
+| `run` | <ul><li>Starting the workers.</li><li> Launching the training process.</li></ul> |
 | `utils` | <ul><li>This package contain the argumment module.</li><li> Module for the function that we use.</li></ul> |
-| `data` | This package is used to download the dataset. |
-| `results` | This package is used to save the results of the training.  |
-| `experiments` | This package contain all the results of the benchmarking and the used configuration. |
+| `data` | Downloading the dataset. |
+| `results` | Results of the training.  |
+| `experiments` | Benchmarking configuration. |
 
 ## Usage
 
@@ -162,11 +162,11 @@ python run/training/main.py -f file_name
 
 ### Results
 
-Here is some experimentation results that we get using our framework, you can check all the results and the configuration in the experimentation package.
+The obtained experimentation results using PyFed framework. You can check all the results and the configuration in the experimentation package.
 
 #### Configuration
 
-This table contains the configuration that we use in our benchmark.
+Benchmark configuration.
 
 <table width="811">
 <tbody>
@@ -331,7 +331,7 @@ This table contains the configuration that we use in our benchmark.
 </tbody>
 </table>
 
-#### Results in the case of IID distribution
+#### Results for IID distributions
 
 <table width="469">
 <tbody>
@@ -433,7 +433,7 @@ This table contains the configuration that we use in our benchmark.
 </tbody>
 </table>
 
-#### Results in the case of Non-IID distribution
+#### Results for Non-IID distributions
 
 <table width="900">
 <tbody>
