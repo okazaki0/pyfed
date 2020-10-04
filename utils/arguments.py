@@ -41,7 +41,6 @@ def readYaml(path, args):
     args.loss = str(config["loss"])
     args.optimizer = str(config["optimizer"])
     args.max_nr_batches = int(config["max_nr_batches"])
-    args.config_path = str(config["config_path"])
 
 
 
@@ -68,11 +67,11 @@ def defineArgs():
     parser.add_argument('--type', '-t', type=str, default="random",help="in the non iid split there are 2 type : 'random' and 'label' for split by label (default=random)")
      #the number or the percentage of samples for each client in the case of the random split
     parser.add_argument('--data_size', '-ds', nargs='+',type=int, default=[1000,1000,1000,1000,1000],
-                        help="the number of samples for each client ( default=[1000,1000,1000,1000,1000]) and should be written like the following 1000 1000 1000 1000 1000")
+                        help="the number of samples for each client ( default=[1000,1000,1000,1000,1000])")
      #number of label for each client
-    parser.add_argument('--label_num', '-ln', nargs='+',type=int, default=[1,4,2,4,3], help="the number of labels for each client (default=[1,4,2,4,3] and should be written like the following : 1 1 1 1 1")
+    parser.add_argument('--label_num', '-ln', nargs='+',type=int, default=[1,4,2,4,3], help="the number of labels for each client (default=[1,4,2,4,3] ")
      #the way of sharing samples of the same class
-    parser.add_argument('--share_samples','-ss', type=int, default=0,help="how to share samples between clients who hold the same classes:\n 0: Share the same samples of class \n \t. 1: Share samples of class randomly \n .2: Share different samples of class \n. 3: Share different class (default 0)")
+    parser.add_argument('--share_samples','-ss', type=int, default=0,help="how to share samples between clients who hold the same classes:\n 0: Share the same samples of class \n \t. 1: Share samples of class randomly \n .2: Share different samples of class ")
      #add a percentage for the global dataset to all clients  
     parser.add_argument('--global_dataset','-gd', type=bool, default=False,help="add a percentage for the global dataset for all clients (default=False)")
      #add some error to our data  
@@ -82,14 +81,13 @@ def defineArgs():
      #the percentage of error which we want to add
     parser.add_argument('--error_rate', '-er', type=float, default=0.01,help="the percentage of error which we want to add (default 0.01)")
      #import args form config.yaml file
-    parser.add_argument('--config_file','-cf',type=bool, default=True,help="import arguments form config.yaml (default=True)")
-    parser.add_argument('--config_path','-cop',type=str, default="./utils/config.yaml",help="path of the config.yaml")
+    parser.add_argument('--config_file','-f',type=str,help="the path of your config file")
 
 
     args = parser.parse_args()
 
-    if args.config_file == True:
-        args = readYaml(args.config_path, args)
+    if args.config_file != None:
+        args = readYaml(args.config_file, args)
 
     # valid parameters
     dataset = ["cifar10","mnist","fashionmnist","sent140","shakespeare"]
@@ -129,9 +127,8 @@ def defineArgs():
     return args
 
 def trainArgs():
-    parser = argparse.ArgumentParser(description="Run federated learning using websocket client workers.")
+    parser = argparse.ArgumentParser(description="run federated learning using websocket client workers.")
     parser.add_argument('--clients', '-c', type=int, default=5,help="number of clients (default=5)")
-    parser.add_argument('--config_file','-cf',type=bool, default=True,help="import arguments form config.yaml (default=True)")
     parser.add_argument("--batch_size","-bs", type=int, default=32, help="batch size of the training")
     parser.add_argument("--max_nr_batches","-mbs", type=int, default=10, help="max nbr of batch of the training")
     parser.add_argument("--test_batch_size","-ts", type=int, default=128, help="batch size used for the test data")
@@ -142,22 +139,22 @@ def trainArgs():
     parser.add_argument("--seed", type=int, default=1, help="seed used for randomization")
     parser.add_argument("--save_model","-smdl", action="store_true", help="if set, model will be saved")
     parser.add_argument("--verbose","-v",action="store_true",help="if set, websocket client workers will be started in verbose mode",)
-    parser.add_argument("--dataset","-d", default="mnist", help="Dataset held by users")
-    parser.add_argument("--eval_every","-ee", type=int, default=10, help="Evaluate the model evrey n rounds")
+    parser.add_argument("--dataset","-d", default="mnist", help="dataset holded by users")
+    parser.add_argument("--eval_every","-ee", type=int, default=10, help="evaluate the model evrey n rounds")
     parser.add_argument("--fraction_client","-fc", type=float, default=1, help="Number of clients that will in each round")
-    parser.add_argument("--model","-m", default="cnn_mnist", help="The model that we will use.")
-    parser.add_argument("--loss","-l", default="nll_loss", help="The loss function  nll_loss or cross_entropy") 
+    parser.add_argument("--model","-m", default="cnn_mnist", help="the model that we will use.")
+    parser.add_argument("--loss","-l", default="nll_loss", help="the loss function  nll_loss or cross_entropy") 
     parser.add_argument("--optimizer","-o", default="SGD", help="the optimizer that we will use : SGD or Adam")   
     parser.add_argument("--aggregation","-a", type=str, default="federated_avg", help="type of aggregation : federated_avg or wieghted_avg")
     parser.add_argument('--data_size', '-ds', nargs='+',type=int, default=[1000,1000,1000,1000,1000],
-                        help="the number of samples for each client ( default=[1000,1000,1000,1000,1000]) and should be written like the following 1000 1000 1000 1000 1000")        
-    parser.add_argument('--config_path','-cop',type=str, default="./utils/config.yaml",help="path of the config.yaml")
+                        help="the number of samples for each client ( default=[1000,1000,1000,1000,1000]) ")        
+    parser.add_argument('--config_file','-f',type=str,help="the path of the config file")
     parser.add_argument('--client_port', '-cp', type=int, default=8000,help="the client port (default=8000)")
 
      #split mode iid or non iid
     parser.add_argument('--split_mode', '-sm', type=str, default="iid",help="split mode: 'iid' or 'niid' (default=iid)")
     args = parser.parse_args()
-    if args.config_file == True:
-        args = readYaml(args.config_path, args)
+    if args.config_file != None:
+        args = readYaml(args.config_file, args)
 
     return args

@@ -376,7 +376,7 @@ def labels_split(args, train_loader):
 
     for index,i in enumerate(temp_class):
         temp_list = []
-        if args.share_samples == 0 or args.share_samples == 3:
+        if args.share_samples == 0 :
             for clas in i:
                 temp_list.extend(temp_datasets[clas][:data_size[index]])
                 print("Client %d" % index, "| add label-%d dataset" % (clas),"| size %d"%len(temp_list))

@@ -16,7 +16,7 @@ def saveres(args,accuracy_scores,loss_scores,training_loss):
         training_loss: training loss
     """
     cwd = os.getcwd()
-    results_dir = os.path.join(cwd, 'Results/')
+    results_dir = os.path.join(cwd, 'results/')
     if not os.path.isdir(results_dir):
         os.makedirs(results_dir)
         
