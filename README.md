@@ -46,11 +46,11 @@ pip install -r requirements.txt
 
 | Package                      | Description                                 |
 | ----------------------------- | ---------------------------------------- |
-| `models`                     | <ul><li>ML models for each dataset.</li><li>Define the package of `metric` that we use.</li></ul> |
+| `models`                     | <ul><li>ML models for each dataset.</li><li>Metrics micro loss and macro loss </li></ul> |
 | `datasets`      | <ul><li>Preprocessing for each dataset.</li><li>Data loader and data splitting.</li></ul> |
 | `aggregation` | Aggregation methods for FL. |
 | `run` | <ul><li>Starting the workers.</li><li> Launching the training process.</li></ul> |
-| `utils` | <ul><li>This package contain the argumment module.</li><li> Module for the function that we use.</li></ul> |
+| `utils` | <ul><li>Framework arguments.</li><li> Utility functions.</li></ul> |
 | `data` | Downloading the dataset. |
 | `results` | Results of the training.  |
 | `experiments` | Benchmarking configuration. |
