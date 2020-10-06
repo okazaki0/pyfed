@@ -1,7 +1,8 @@
 #   @stefanonardo
 
+
 class EarlyStopping(object):
-    def __init__(self, mode='min', min_delta=0, patience=10, percentage=False):
+    def __init__(self, mode="min", min_delta=0, patience=10, percentage=False):
         self.mode = mode
         self.min_delta = min_delta
         self.patience = patience
@@ -34,17 +35,15 @@ class EarlyStopping(object):
         return False
 
     def _init_is_better(self, mode, min_delta, percentage):
-        if mode not in {'min', 'max'}:
-            raise ValueError('mode ' + mode + ' is unknown!')
+        if mode not in {"min", "max"}:
+            raise ValueError("mode " + mode + " is unknown!")
         if not percentage:
-            if mode == 'min':
+            if mode == "min":
                 self.is_better = lambda a, best: a < best - min_delta
-            if mode == 'max':
+            if mode == "max":
                 self.is_better = lambda a, best: a > best + min_delta
         else:
-            if mode == 'min':
-                self.is_better = lambda a, best: a < best - (
-                            best * min_delta / 100)
-            if mode == 'max':
-                self.is_better = lambda a, best: a > best + (
-                            best * min_delta / 100)
+            if mode == "min":
+                self.is_better = lambda a, best: a < best - (best * min_delta / 100)
+            if mode == "max":
+                self.is_better = lambda a, best: a > best + (best * min_delta / 100)

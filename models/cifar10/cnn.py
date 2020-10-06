@@ -4,14 +4,14 @@ import torch.nn.functional as F
 
 
 def get_example_input():
-    """ The function to get the input example for the jit.trace
+    """The function to get the input example for the jit.trace
     Returns:
         example_input: the example input
     """
-    example_input = torch.randn(2,3,32,32)
+    example_input = torch.randn(2, 3, 32, 32)
     return example_input
 
-    
+
 class cnn(nn.Module):
     def __init__(self):
         super(cnn, self).__init__()

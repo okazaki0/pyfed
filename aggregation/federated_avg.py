@@ -3,6 +3,7 @@ from typing import List
 import logging
 from aggregation.utils.func import *
 
+
 def federated_avg(models: List[torch.nn.Module]) -> torch.nn.Module:
     """Calculate the federated average of a list of models.
 

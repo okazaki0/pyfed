@@ -6,7 +6,7 @@ from torch.autograd import Variable
 
 
 def get_example_input():
-    """ The function to get the input example for the jit.trace
+    """The function to get the input example for the jit.trace
     Returns:
         example_input: the example input
     """
@@ -23,7 +23,7 @@ class gru(nn.Module):
         self.num_layer = num_layer
         self.embedding = nn.Embedding(79, input_size)
         self.lstm = nn.GRU(input_size, hidden_size, num_layer)
-        #nn.LSTM(input_size=input_size, hidden_size=hidden_size, num_layers=num_layer, batch_first=True)
+        # nn.LSTM(input_size=input_size, hidden_size=hidden_size, num_layers=num_layer, batch_first=True)
         self.linear = nn.Linear(hidden_size, output_size)
 
     def forward(self, input):
@@ -32,6 +32,3 @@ class gru(nn.Module):
         output = self.linear(output[:, -1, :])
         print(output)
         return output
-
-
-

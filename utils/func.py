@@ -9,7 +9,7 @@ import datetime
 
 
 def cleanFolder(path):
-    """ the clean function 
+    """the clean function
     args:
         path: the path to clean
     """
@@ -17,12 +17,13 @@ def cleanFolder(path):
     for f in files:
         os.remove(f)
 
+
 def readnpy(dataset):
-    """ divise the dataset into data and target  
+    """divise the dataset into data and target
     args:
         dataset:[[imgs, label], [imgs, label]...., [imgs, label]]
     Return:
-        dataset_data,dataset_target: the data and targets 
+        dataset_data,dataset_target: the data and targets
     """
 
     np_array = dataset
@@ -32,18 +33,19 @@ def readnpy(dataset):
         imgs.append(np_array[index][0])
         label.append(np_array[index][1])
     dataset_data = torch.from_numpy(np.array(imgs))
-    dataset_target =  torch.from_numpy(np.array(label))
+    dataset_target = torch.from_numpy(np.array(label))
 
-    return dataset_data,dataset_target
+    return dataset_data, dataset_target
 
-#Get the data from the server data
+
+# Get the data from the server data
 def server_data():
-    """ read the data of the server 
+    """read the data of the server
     Return:
-        dataset_data,dataset_target: the dataset of the server 
+        dataset_data,dataset_target: the dataset of the server
     """
-    #create instance of the server data
-    with open("./split/s", "rb") as fp:   # Unpickling
-        data = pickle.load(fp)  
-    dataset_data,dataset_target = readnpy(data)
-    return dataset_data,dataset_target
+    # create instance of the server data
+    with open("./split/s", "rb") as fp:  # Unpickling
+        data = pickle.load(fp)
+    dataset_data, dataset_target = readnpy(data)
+    return dataset_data, dataset_target

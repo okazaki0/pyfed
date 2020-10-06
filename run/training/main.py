@@ -1,9 +1,10 @@
-
 import warnings
-warnings.filterwarnings('ignore')
+
+warnings.filterwarnings("ignore")
 # Dependencies
 import sys
-sys.path.append('./')
+
+sys.path.append("./")
 import asyncio
 import syft as sy
 from syft.frameworks.torch.fl import utils
@@ -22,17 +23,15 @@ import run.training.fit_on_worker as rwc
 from utils.early_stopping import EarlyStopping
 from utils.func import *
 from utils.arguments import trainArgs
-from datasets.dataloader  import load_data
+from datasets.dataloader import load_data
 from run.training.model import *
 from models.metrics.save_results import *
 import argparse
 
 
-
-
 # Arguments
 args = trainArgs()
-_ , test_loader, _ = load_data(args)
+_, test_loader, _ = load_data(args)
 es = EarlyStopping(patience=0)
 hook = sy.TorchHook(torch)
 use_cuda = args.cuda and torch.cuda.is_available()
@@ -54,31 +53,33 @@ LOG_LEVEL = logging.DEBUG
 logger.setLevel(LOG_LEVEL)
 
 
-#Instance the clients
+# Instance the clients
 kwargs_websocket = {"host": "127.0.0.1", "hook": hook, "verbose": args.verbose}
-worker_instances = rwc.instance(args,kwargs_websocket)
+worker_instances = rwc.instance(args, kwargs_websocket)
 
-#Model
-mdl = importlib.import_module("models."+args.dataset+"."+args.model)
+# Model
+mdl = importlib.import_module("models." + args.dataset + "." + args.model)
 model = getattr(mdl, args.model)
 model = model().to(device)
-print("Model: ",model)
+print("Model: ", model)
 # Making the model serializable
 # In order to send the model to the workers we need the model to be serializable, for this we use jit.
 model.eval()
 traced_model = torch.jit.trace(model, mdl.get_example_input())
-#print(args)
+# print(args)
 
-#Server data
-#X,Y = server_data()
+# Server data
+# X,Y = server_data()
 
-#Starting learning loop
+# Starting learning loop
 print("Start Training")
-loss_scores,accuracy_scores,training_loss = asyncio.run(fit(args,traced_model,worker_instances,device,test_loader,logger,es))
-#Save resulta and show the plots
-saveres(args,accuracy_scores,loss_scores,training_loss)
+loss_scores, accuracy_scores, training_loss = asyncio.run(
+    fit(args, traced_model, worker_instances, device, test_loader, logger, es)
+)
+# Save resulta and show the plots
+saveres(args, accuracy_scores, loss_scores, training_loss)
 
-#Save the trained model
+# Save the trained model
 if args.save_model:
     model_name = "./" + args.model + ".pt"
     torch.save(model.state_dict(), model_name)

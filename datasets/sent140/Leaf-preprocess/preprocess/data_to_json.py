@@ -4,15 +4,15 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser(description="parameters.")
-parser.add_argument("--file",type=str,help="the data to transfor to json")
+parser.add_argument("--file", type=str, help="the data to transfor to json")
 args = parser.parse_args()
 
 parent_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
-data_dir = os.path.join(parent_path, 'data', 'raw_data', args.file+'.csv')
+data_dir = os.path.join(parent_path, "data", "raw_data", args.file + ".csv")
 
 data = []
-with open(data_dir, 'rt', encoding='ISO-8859-1') as f:
+with open(data_dir, "rt", encoding="ISO-8859-1") as f:
     reader = csv.reader(f)
     data = list(reader)
 
@@ -55,13 +55,13 @@ user_data = {}
 row_i = 0
 
 for u in users:
-    user_data[u] = {'x': [], 'y': []}
+    user_data[u] = {"x": [], "y": []}
 
-    while ((row_i < len(data)) and (data[row_i][4] == u)):
+    while (row_i < len(data)) and (data[row_i][4] == u):
         row = data[row_i]
         y = 1 if row[0] == "4" else 0
-        user_data[u]['x'].append(row[1:])
-        user_data[u]['y'].append(y)
+        user_data[u]["x"].append(row[1:])
+        user_data[u]["y"].append(y)
 
         row_i += 1
 
@@ -69,11 +69,11 @@ for u in users:
 # create .json file
 
 all_data = {}
-all_data['users'] = users
-all_data['num_samples'] = num_samples
-all_data['user_data'] = user_data
+all_data["users"] = users
+all_data["num_samples"] = num_samples
+all_data["user_data"] = user_data
 
-file_path = os.path.join(parent_path, 'data', 'all_data',args.file+'.json')
+file_path = os.path.join(parent_path, "data", "all_data", args.file + ".json")
 
-with open(file_path, 'w') as outfile:
+with open(file_path, "w") as outfile:
     json.dump(all_data, outfile)

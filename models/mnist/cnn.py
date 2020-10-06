@@ -6,12 +6,13 @@ import logging
 
 
 def get_example_input():
-    """ The function to get the input example for the jit.trace
+    """The function to get the input example for the jit.trace
     Returns:
         example_input: the example input
     """
     example_input = torch.zeros([1, 1, 28, 28], dtype=torch.float)
     return example_input
+
 
 class cnn(nn.Module):
     def __init__(self):
@@ -30,5 +31,3 @@ class cnn(nn.Module):
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
-
-
