@@ -32,6 +32,9 @@ if args.server_data == True:
 train_loader, _, global_loader = load_data(args)
 sub_dataset = splitDataset(args, train_loader, global_loader)
 
+if not os.path.exists('./data/split'):
+    os.makedirs('./data/split')
+
 cleanFolder("./data/split/*")
 for i in range(args.clients):
     if (i == args.clients - 1) and (args.server_data == True):
