@@ -168,6 +168,8 @@ The obtained experimentation results using PyFed framework. You can check all th
 
 Benchmark configuration.
 
+The total number of clients is 100.
+
 <table width="811">
 <tbody>
 <tr>
