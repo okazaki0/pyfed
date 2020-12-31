@@ -3,7 +3,7 @@
 dataset: mnist
 
 # number of Clients (default n=5)
-clients: 10
+clients: 100
 # client port (which we will start)
 client_port: 8000
 
