@@ -1,6 +1,6 @@
 # PyFed
 
-This is the code accompanying the paper "PyFed: Exteding PySyft with N-IID Federated Learning Benchmark" Paper link:  (Coming soon)
+This is the code accompanying the paper "PyFed: Exteding PySyft with N-IID Federated Learning Benchmark" Paper link:  https://caiac.pubpub.org/pub/7yr5bkck/release/1
 
 ## About
 
